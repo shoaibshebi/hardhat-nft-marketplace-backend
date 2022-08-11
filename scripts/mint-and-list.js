@@ -13,9 +13,11 @@ async function mintAndList() {
   const tokenId = mintTxReceipt.events[0].args.tokenId;
 
   console.log("Approving NFT...");
+  //approve that specific tokenId NFT against this nftMarketplace's address
   const approvalTx = await basicNft.approve(nftMarketplace.address, tokenId);
   await approvalTx.wait(1);
   console.log("Listing NFT on marketplace...");
+  //now this NFT will be listed on this
   const listTx = await nftMarketplace.listItem(
     basicNft.address,
     tokenId,
