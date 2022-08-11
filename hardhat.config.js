@@ -22,6 +22,7 @@ module.exports = {
       forking: {
         url: MAINNET_PRC_URL,
       },
+      blockConfirmations: 6,
     },
     rinkeby: {
       url: RINKEBY_RPC_URL,
@@ -66,7 +67,8 @@ module.exports = {
   },
   namedAccounts: {
     deployer: {
-      default: 0,
+      default: 0, // first account is the default one from all the hardhat accounts
+      // 1: 0, // same on othe mainnet , first one is default
     },
     player: {
       default: 1,

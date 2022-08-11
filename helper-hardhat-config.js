@@ -36,6 +36,7 @@ const networkConfig = {
 
 const DECIMALS = "18";
 const INITIAL_PRICE = "200000000000000000000";
+const VERIFICATION_BLOCK_CONFIRMATIONS = 6;
 const developmentChains = ["hardhat", "localhost"];
 
 module.exports = {
