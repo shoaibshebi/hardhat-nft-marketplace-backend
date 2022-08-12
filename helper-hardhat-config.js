@@ -39,7 +39,12 @@ const INITIAL_PRICE = "200000000000000000000";
 const VERIFICATION_BLOCK_CONFIRMATIONS = 6;
 const developmentChains = ["hardhat", "localhost"];
 
+const frontEndContractsFile =
+  "../hardhat-nft-marketplace-nextjs/constants/networkMapping.json";
+
 module.exports = {
+  VERIFICATION_BLOCK_CONFIRMATIONS,
+  frontEndContractsFile,
   networkConfig,
   developmentChains,
   DECIMALS,
