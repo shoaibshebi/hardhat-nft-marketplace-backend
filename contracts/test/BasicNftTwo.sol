@@ -1,22 +1,16 @@
-//SPX-License-Identifier: MIT
-
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.7;
 
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 
-contract BasicNft is ERC721 {
-  //This is the sole nft here having below URI
-  //i-whenever you mint you get same NFT
-  //ii-you get the same URI on tokenURI
-  //iii-diff tokenCounter depending on how many times same NFT
-
-  event DogMinted(uint256 tokenId);
-
+contract BasicNftTwo is ERC721 {
   string public constant TOKEN_URI =
-    "ipfs://bafybeig37ioir76s7mg5oobetncojcm3c3hxasyd4rvid4jqhy4gkaheg4/?filename=0-PUG.json";
+    "ipfs://QmdryoExpgEQQQgJPoruwGJyZmz6SqV4FRTX1i73CT3iXn";
   uint256 private s_tokenCounter;
 
-  constructor() ERC721("Dogie", "GOG") {
+  event DogMinted(uint256 indexed tokenId);
+
+  constructor() ERC721("Dogie", "DOG") {
     s_tokenCounter = 0;
   }
 

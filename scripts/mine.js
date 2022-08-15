@@ -1,6 +1,6 @@
 const { moveBlocks } = require("../utils/move-blocks");
 
-const BLOCKS = 5;
+const BLOCKS = 2;
 
 async function mine() {
   await moveBlocks(BLOCKS);

@@ -41,10 +41,12 @@ const developmentChains = ["hardhat", "localhost"];
 
 const frontEndContractsFile =
   "../hardhat-nft-marketplace-nextjs/constants/networkMapping.json";
+const frontEndAbiLocation = "../hardhat-nft-marketplace-nextjs/constants/";
 
 module.exports = {
   VERIFICATION_BLOCK_CONFIRMATIONS,
   frontEndContractsFile,
+  frontEndAbiLocation,
   networkConfig,
   developmentChains,
   DECIMALS,

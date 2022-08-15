@@ -34,7 +34,7 @@ contract NftMarketplace {
   event ItemCanceled(
     address indexed sender,
     address indexed nftAddress,
-    uint256 tokenId
+    uint256 indexed tokenId
   );
 
   //State variables
@@ -107,11 +107,7 @@ contract NftMarketplace {
     emit ItemListed(msg.sender, nftAddress, tokenId, price);
   }
 
-  function buyItem(
-    address nftAddress,
-    uint256 tokenId,
-    address
-  )
+  function buyItem(address nftAddress, uint256 tokenId)
     external
     payable
     //   nonReentrant
