@@ -15,7 +15,7 @@ contract BasicNft is ERC721 {
   event DogMinted(uint256 tokenId);
 
   string public constant TOKEN_URI =
-    "ipfs://bafybeid3nhfrv6t6w4j7dmdrx65jsjbll23svohqbpjnegqsf5e37gcvmu/?filename=0-Monkey.json";
+    "ipfs://QmWeQRM2ou1YXwJgMzTdL7ERVzHQkSsQHn3D88bVaB5Yd2";
   uint256 private s_tokenCounter;
 
   constructor() ERC721("Dogie", "GOG") {

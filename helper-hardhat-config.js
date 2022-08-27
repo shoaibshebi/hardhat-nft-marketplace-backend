@@ -42,6 +42,7 @@ const developmentChains = ["hardhat", "localhost"];
 const frontEndContractsFile =
   "../hardhat-nft-marketplace-nextjs/constants/networkMapping.json";
 const frontEndAbiLocation = "../hardhat-nft-marketplace-nextjs/constants/";
+const uriContracts = "./constants/token-URIs.json";
 
 module.exports = {
   VERIFICATION_BLOCK_CONFIRMATIONS,
@@ -51,4 +52,5 @@ module.exports = {
   developmentChains,
   DECIMALS,
   INITIAL_PRICE,
+  uriContracts,
 };
