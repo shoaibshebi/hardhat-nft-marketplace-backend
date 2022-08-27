@@ -15,7 +15,7 @@ async function mintAndList() {
   );
   if (network.config.chainId == 31337) {
     // Moralis has a hard time if you move more than 1 block!
-    await moveBlocks(2, (sleepAmount = 1000));
+    await moveBlocks(1, (sleepAmount = 1000));
   }
 }
 

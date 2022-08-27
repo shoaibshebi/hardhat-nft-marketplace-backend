@@ -10,14 +10,12 @@ require("dotenv").config();
 
 const RINKEBY_RPC_URL = process.env.RINKEBY_RPC_URL;
 const PRIVATE_KEY = process.env.PRIVATE_KEY;
-const COINMARKETCAP_API_KEY = process.env.COINMARKETCAP_API_KEY;
+// const COINMARKETCAP_API_KEY = process.env.COINMARKETCAP_API_KEY;
 const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY;
 const MAINNET_PRC_URL = process.env.MAINNET_PRC_URL;
 
 const MAINNET_RPC_URL =
-  process.env.MAINNET_RPC_URL ||
-  process.env.ALCHEMY_MAINNET_RPC_URL ||
-  "https://eth-mainnet.alchemyapi.io/v2/your-api-key";
+  MAINNET_PRC_URL || "https://eth-mainnet.alchemyapi.io/v2/your-api-key";
 const KOVAN_RPC_URL =
   process.env.KOVAN_RPC_URL ||
   "https://eth-kovan.alchemyapi.io/v2/your-api-key";
@@ -54,12 +52,13 @@ module.exports = {
     },
     rinkeby: {
       url: RINKEBY_RPC_URL,
-      accounts: PRIVATE_KEY !== undefined ? [PRIVATE_KEY] : [],
+      accounts: [PRIVATE_KEY],
       //   accounts: {
       //     mnemonic: MNEMONIC,
       //   },
       saveDeployments: true,
       chainId: 4,
+      blockConfirmations: 6,
     },
     mainnet: {
       url: MAINNET_RPC_URL,
@@ -106,6 +105,16 @@ module.exports = {
       kovan: ETHERSCAN_API_KEY,
       polygon: POLYGONSCAN_API_KEY,
     },
+    customChains: [
+      {
+        network: "rinkeby",
+        chainId: 4,
+        urls: {
+          apiURL: "https://api-rinkeby.etherscan.io/api",
+          browserURL: "https://rinkeby.etherscan.io",
+        },
+      },
+    ],
   },
   gasReporter: {
     enabled: REPORT_GAS,
