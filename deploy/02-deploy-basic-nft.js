@@ -19,12 +19,6 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
     log: true,
     waitConfirmations: waitBlockConfirmations,
   });
-  const basicNftTwo = await deploy("BasicNftTwo", {
-    from: deployer,
-    args: [],
-    log: true,
-    waitBlockConfirmations: waitBlockConfirmations,
-  });
 
   if (
     !developmentChains.includes(network.name) &&
@@ -32,7 +26,6 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
   ) {
     log("Verifying...");
     await verify(basicNft.address, args);
-    await verify(basicNftTwo.address, args);
   }
 
   log("-----------------------------------------------------");

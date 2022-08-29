@@ -5,6 +5,7 @@
 
 pragma solidity ^0.8.7;
 
+import "hardhat/console.sol";
 import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 
@@ -172,5 +173,13 @@ contract NftMarketplace {
 
   function getProceeds(address seller) external view returns (uint256) {
     return s_proceeds[seller];
+  }
+
+  fallback() external payable {
+    console.log("----- fallback:", msg.value);
+  }
+
+  receive() external payable {
+    console.log("----- receive:", msg.value);
   }
 }

@@ -40,9 +40,8 @@ const VERIFICATION_BLOCK_CONFIRMATIONS = 6;
 const developmentChains = ["hardhat", "localhost"];
 
 const frontEndContractsFile =
-  "../hardhat-nft-marketplace-nextjs/constants/networkMapping.json";
-const frontEndAbiLocation = "../hardhat-nft-marketplace-nextjs/constants/";
-const uriContracts = "./constants/token-URIs.json";
+  "../nextjs-nft-marketplace-moralis-fcc/constants/networkMapping.json";
+const frontEndAbiLocation = "../nextjs-nft-marketplace-moralis-fcc/constants/";
 
 module.exports = {
   VERIFICATION_BLOCK_CONFIRMATIONS,
@@ -52,5 +51,4 @@ module.exports = {
   developmentChains,
   DECIMALS,
   INITIAL_PRICE,
-  uriContracts,
 };

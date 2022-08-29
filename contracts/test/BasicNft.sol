@@ -3,6 +3,7 @@
 pragma solidity ^0.8.7;
 
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
+import "hardhat/console.sol";
 
 contract BasicNft is ERC721 {
   //This is the sole nft here having below URI
@@ -10,22 +11,22 @@ contract BasicNft is ERC721 {
   //ii-you get the same URI on tokenURI
   //iii-diff tokenCounter depending on how many times same NFT
 
-  //TOKEN_URI = "ipfs://bafybeig37ioir76s7mg5oobetncojcm3c3hxasyd4rvid4jqhy4gkaheg4/?filename=0-PUG.json";
+  event NftMinted(uint256 tokenId);
 
-  event DogMinted(uint256 tokenId);
-
-  string public constant TOKEN_URI =
-    "ipfs://QmWeQRM2ou1YXwJgMzTdL7ERVzHQkSsQHn3D88bVaB5Yd2";
   uint256 private s_tokenCounter;
+  mapping(uint256 => string) private s_tokenToUri;
 
-  constructor() ERC721("Dogie", "GOG") {
+  constructor() ERC721("Nft", "NFT") {
     s_tokenCounter = 0;
   }
 
-  function mintNft() public {
+  function mintNft(string memory nftHash) public returns (uint256) {
+    s_tokenToUri[s_tokenCounter] = nftHash;
     _safeMint(msg.sender, s_tokenCounter);
-    emit DogMinted(s_tokenCounter);
+    emit NftMinted(s_tokenCounter);
+    uint256 tokenNo = s_tokenCounter;
     s_tokenCounter = s_tokenCounter + 1;
+    return tokenNo;
   }
 
   function tokenURI(uint256 tokenId)
@@ -38,10 +39,18 @@ contract BasicNft is ERC721 {
       _exists(tokenId),
       "ERC721Metadata: URI query for nonexistent token"
     );
-    return TOKEN_URI;
+    return s_tokenToUri[tokenId];
   }
 
   function getTokenCounter() public view returns (uint256) {
     return s_tokenCounter;
+  }
+
+  fallback() external payable {
+    console.log("----- fallback:", msg.value);
+  }
+
+  receive() external payable {
+    console.log("----- receive:", msg.value);
   }
 }

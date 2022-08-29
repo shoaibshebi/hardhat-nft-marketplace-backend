@@ -10,7 +10,9 @@ async function mintAndList() {
   const basicNft = await ethers.getContract("BasicNft");
   const nftMarketplace = await ethers.getContract("NftMarketplace");
   console.log("Minting...");
-  const mintTx = await basicNft.mintNft();
+  const mintTx = await basicNft.mintNft(
+    "QmYaaoQPXyQWHeLKJmiHyGHmFA2MEHw9raDom5tEaGbTm2"
+  );
   const mintTxReceipt = await mintTx.wait(1);
   const tokenId = mintTxReceipt.events[0].args.tokenId;
 
