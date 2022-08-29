@@ -37,6 +37,7 @@ module.exports = {
       //   url: MAINNET_RPC_URL
       // }
       chainId: 31337,
+      allowUnlimitedContractSize: true,
     },
     localhost: {
       chainId: 31337,
@@ -48,6 +49,7 @@ module.exports = {
       //     mnemonic: MNEMONIC,
       // },
       saveDeployments: true,
+      allowUnlimitedContractSize: true,
       chainId: 42,
     },
     rinkeby: {
@@ -58,7 +60,8 @@ module.exports = {
       //   },
       saveDeployments: true,
       chainId: 4,
-      blockConfirmations: 6,
+      allowUnlimitedContractSize: true,
+      blockConfirmations: 2,
     },
     mainnet: {
       url: MAINNET_RPC_URL,
@@ -67,12 +70,14 @@ module.exports = {
       //     mnemonic: MNEMONIC,
       //   },
       saveDeployments: true,
+      allowUnlimitedContractSize: true,
       chainId: 1,
     },
     polygon: {
       url: POLYGON_MAINNET_RPC_URL,
       accounts: PRIVATE_KEY !== undefined ? [PRIVATE_KEY] : [],
       saveDeployments: true,
+      allowUnlimitedContractSize: true,
       chainId: 137,
     },
   },

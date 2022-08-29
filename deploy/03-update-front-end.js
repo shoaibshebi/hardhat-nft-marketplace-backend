@@ -32,19 +32,30 @@ async function updateAbi() {
 async function updateContractAddresses() {
   const chainId = network.config.chainId.toString();
   const nftMarketplace = await ethers.getContract("NftMarketplace");
+  const basicNFt = await ethers.getContract("BasicNft");
   const contractAddresses = JSON.parse(
     fs.readFileSync(frontEndContractsFile, "utf8")
   );
   if (chainId in contractAddresses) {
     if (
-      !contractAddresses[chainId]["NftMarketplace"].includes(
+      !contractAddresses[chainId]["contracts"]["NftMarketplace"].includes(
         nftMarketplace.address
       )
     ) {
-      contractAddresses[chainId]["NftMarketplace"].push(nftMarketplace.address);
+      contractAddresses[chainId]["contracts"]["NftMarketplace"].push(
+        nftMarketplace.address
+      );
+    }
+    if (
+      !contractAddresses[chainId]["contracts"]["Nft"].includes(basicNFt.address)
+    ) {
+      contractAddresses[chainId]["contracts"]["Nft"].push(basicNFt.address);
     }
   } else {
-    contractAddresses[chainId] = { NftMarketplace: [nftMarketplace.address] };
+    contractAddresses[chainId] = {
+      NftMarketplace: [nftMarketplace.address],
+      Nft: [basicNFt.address],
+    };
   }
   fs.writeFileSync(frontEndContractsFile, JSON.stringify(contractAddresses));
 }
