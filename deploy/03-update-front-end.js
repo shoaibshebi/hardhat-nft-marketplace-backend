@@ -52,7 +52,7 @@ async function updateContractAddresses() {
       contractAddresses[chainId]["contracts"]["Nft"].push(basicNFt.address);
     }
   } else {
-    contractAddresses[chainId] = {
+    contractAddresses[chainId]["contracts"] = {
       NftMarketplace: [nftMarketplace.address],
       Nft: [basicNFt.address],
     };

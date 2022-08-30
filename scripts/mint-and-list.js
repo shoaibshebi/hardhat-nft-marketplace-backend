@@ -4,7 +4,7 @@ const { ethers, network } = require("hardhat");
 const { moveBlocks } = require("../utils/move-blocks");
 // const { mine } = require("./mine");
 
-const PRICE = ethers.utils.parseEther("0.1");
+const PRICE = ethers.utils.parseEther("0.01");
 
 async function mintAndList() {
   const basicNft = await ethers.getContract("BasicNft");

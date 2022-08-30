@@ -9,6 +9,7 @@ require("dotenv").config();
 /** @type import('hardhat/config').HardhatUserConfig */
 
 const RINKEBY_RPC_URL = process.env.RINKEBY_RPC_URL;
+const GOERLI_RPC_URL = process.env.GOERLI_RPC_URL;
 const PRIVATE_KEY = process.env.PRIVATE_KEY;
 // const COINMARKETCAP_API_KEY = process.env.COINMARKETCAP_API_KEY;
 const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY;
@@ -51,6 +52,16 @@ module.exports = {
       saveDeployments: true,
       allowUnlimitedContractSize: true,
       chainId: 42,
+      gas: 5000000,
+    },
+    goerli: {
+      url: GOERLI_RPC_URL,
+      accounts: [PRIVATE_KEY],
+      saveDeployments: true,
+      chainId: 5,
+      allowUnlimitedContractSize: true,
+      blockConfirmations: 2,
+      gas: 5000000,
     },
     rinkeby: {
       url: RINKEBY_RPC_URL,
@@ -62,6 +73,7 @@ module.exports = {
       chainId: 4,
       allowUnlimitedContractSize: true,
       blockConfirmations: 2,
+      gas: 5000000,
     },
     mainnet: {
       url: MAINNET_RPC_URL,
@@ -108,6 +120,7 @@ module.exports = {
     apiKey: {
       rinkeby: ETHERSCAN_API_KEY,
       kovan: ETHERSCAN_API_KEY,
+      goerli: ETHERSCAN_API_KEY,
       polygon: POLYGONSCAN_API_KEY,
     },
     customChains: [
@@ -117,6 +130,14 @@ module.exports = {
         urls: {
           apiURL: "https://api-rinkeby.etherscan.io/api",
           browserURL: "https://rinkeby.etherscan.io",
+        },
+      },
+      {
+        network: "goerli",
+        chainId: 5,
+        urls: {
+          apiURL: "https://api-goerli.etherscan.io/api",
+          browserURL: "https://goerli.etherscan.io",
         },
       },
     ],
