@@ -1,5 +1,3 @@
-//File consists of with calling contract methods to do the stuff with blockchain
-//like first get contract and then call contract function basicNft.mintNft()
 const { ethers, network } = require("hardhat");
 const { moveBlocks } = require("../utils/move-blocks");
 // const { mine } = require("./mine");
